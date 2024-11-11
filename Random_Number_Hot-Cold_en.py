@@ -52,25 +52,30 @@ def Guess_a_number():
 
     # print("The goal of the game is to guess a number between 1 and 100 using the Hot-Cold information.")
 
-    User_Number = int(input("Guess a number: ")) 
+    User_Number = int(input(f"Guess a number between 1 and {Maximum_number}: "))
     
-    while Guess_a_number != User_Number and 1 <= User_Number <= Maximum_number:
-        if Guess_a_number > User_Number:
-            difference = Guess_a_number - User_Number
-            if difference <= Hot:
-                print("You are hot!")
-            elif difference <= Warm:
-                print("You are Warm.")
-            else:
-                print("You are Cold.")
+    while Guess_a_number != User_Number:
+        # Validate that User_Number is within the range
+        if User_Number < 1 or User_Number > Maximum_number:
+            print(f"Please enter a number within the range 1 to {Maximum_number}.")
         else:
-            difference = User_Number - Guess_a_number
-            if difference <= Hot:
-                print("You are hot!")
-            elif difference <= Warm:
-                print("You are Warm.")
+            # Compare the guessed number with the target
+            if Guess_a_number > User_Number:
+                difference = Guess_a_number - User_Number
+                if difference <= Hot:
+                    print("You are hot!")
+                elif difference <= Warm:
+                    print("You are warm.")
+                else:
+                    print("You are cold.")
             else:
-                print("You are Cold.")
+                difference = User_Number - Guess_a_number
+                if difference <= Hot:
+                    print("You are hot!")
+                elif difference <= Warm:
+                    print("You are warm.")
+                else:
+                    print("You are cold.")
     
         User_Number = int(input("Guess a number: "))
 
